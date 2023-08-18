@@ -1,0 +1,23 @@
+<div class="overflow-auto">
+  <table class="row-border hover" id="equipmentListings">
+    <thead>
+      <tr class="text-success">
+        <th *ngFor="let column of tableColumn">{{ column }}</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let equip of tableData" class="text-start">
+        <td>{{ equip.serialNo }}</td>
+        <td>{{ equip.name }}</td>
+        <td>{{ equip.location }}</td>
+        <td>{{ equip.department }}</td>
+        <td>{{ equip.condition }}</td>
+        <td>{{ equip.manfac }}</td>
+        <td>
+          <span class="mx-1">Edit</span>
+          <span class="mx-1">View</span>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

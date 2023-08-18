@@ -1,0 +1,263 @@
+<div class="container-fluid parts">
+  <div class="py2 px-3 text-center">
+    <h3
+      mat-dialog-title
+      class="text-muted py-1 m-0 fw-bold"
+      style="border-bottom: 1px solid black"
+    >
+      New Spare Part(s)
+    </h3>
+    <mat-dialog-content>
+      <div class="py-3">
+        <form [formGroup]="sparePartForm">
+          <div class="row">
+            <div class="col-sm-6 row mb-3">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="part_name"
+                  >Spare part name:</label
+                >
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  type="text"
+                  formControlName="part_name"
+                  [class.is-invalid]="partName?.invalid && partName?.touched"
+                />
+                <small
+                  *ngIf="partName?.invalid && partName?.touched"
+                  class="text-danger"
+                  >Spare part name is requuired</small
+                >
+              </div>
+            </div>
+            <div class="col-sm-6 row">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="serial_number"
+                  >Serial Number:</label
+                >
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  type="text"
+                  formControlName="serial_number"
+                  [class.is-invalid]="
+                    serialNumber?.invalid && serialNumber?.touched
+                  "
+                />
+                <small
+                  *ngIf="serialNumber?.invalid && serialNumber?.touched"
+                  class="text-danger"
+                  >Serial number is requuired</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 row mb-3">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="quantity">Quantity:</label>
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  type="number"
+                  min="1"
+                  step="1"
+                  formControlName="quantity"
+                  [class.is-invalid]="quantity?.invalid && quantity?.touched"
+                />
+              </div>
+            </div>
+            <div class="col-sm-6 row">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="asset_number"
+                  >For Equipment:</label
+                >
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  type="text"
+                  placeholder="Enter equipment asset number"
+                  formControlName="asset_number"
+                  [class.is-invalid]="
+                    assetNumber?.invalid && assetNumber?.touched
+                  "
+                />
+                <small
+                  *ngIf="assetNumber?.invalid && assetNumber?.touched"
+                  class="text-danger"
+                  >No Equipment specified</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 row">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="expiry_date">Expiry Date:</label>
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  type="date"
+                  formControlName="expiry_date"
+                  [class.is-invalid]="
+                    expiryDate?.invalid && expiryDate?.touched
+                  "
+                />
+                <small
+                  *ngIf="expiryDate?.invalid && expiryDate?.touched"
+                  class="text-danger"
+                  >Expiry date is required</small
+                >
+              </div>
+            </div>
+            <div class="col-sm-6 row"></div>
+          </div>
+          <div class="text-muted row text-start mt-3">
+            <p class="fs-6 fw-semibold text-decoration-underline">
+              Vendor Information
+            </p>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 row mb-3">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="vendor_name"
+                  >Company name:</label
+                >
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  placeholder="e.g. ABC Supplies Ltd"
+                  type="text"
+                  formControlName="vendor_name"
+                  [class.is-invalid]="
+                    vendorName?.invalid && vendorName?.touched
+                  "
+                />
+                <small
+                  *ngIf="vendorName?.invalid && vendorName?.touched"
+                  class="text-danger"
+                  >Company name is required</small
+                >
+              </div>
+            </div>
+            <div class="col-sm-6 row">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="asset_number"
+                  >Vendor's Email:</label
+                >
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  type="email"
+                  placeholder="e.g. companyabc@example.com"
+                  formControlName="vendor_email"
+                  [class.is-invalid]="
+                    vendorEmail?.invalid && vendorEmail?.touched
+                  "
+                />
+                <small
+                  *ngIf="vendorEmail?.invalid && vendorEmail?.touched"
+                  class="text-danger"
+                  >Vendor Email is invalid</small
+                >
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 row mb-3">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="vendor_phone"
+                  >Vendor's phone number:</label
+                >
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  type="tel"
+                  placeholder="+233540000000"
+                  formControlName="vendor_phone"
+                  [class.is-invalid]="
+                    vendorPhone?.invalid && vendorPhone?.touched
+                  "
+                />
+                <small
+                  *ngIf="vendorPhone?.invalid && vendorPhone?.touched"
+                  class="text-danger"
+                  >Vendor's phone number is invalid</small
+                >
+              </div>
+            </div>
+            <div class="col-sm-6 row">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="vendor_address"
+                  >Vendor's Address:</label
+                >
+              </div>
+              <div class="col-sm-8 text-center">
+                <input
+                  class="form-control form-control-sm"
+                  type="email"
+                  formControlName="vendor_address"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-6 row">
+              <div class="col-sm-4 text-center">
+                <label class="form-label" for="vendor_country"
+                  >Vendor's Country:</label
+                >
+              </div>
+              <div class="col-sm-8 text-center">
+                <select2
+                  formControlName="vendor_country"
+                  [overlay]="select2Overlay"
+                  [data]="country"
+                  styleMode="noStyle"
+                  [minCountForSearch]="minCountForSearch"
+                  [placeholder]="selected"
+                  class="form-control form-control-sm"
+                >
+                </select2>
+              </div>
+            </div>
+            <div class="col-sm-6 row"></div>
+          </div>
+        </form>
+      </div>
+      <div class="row">
+        <div class="col-sm-4 text-center"></div>
+        <div class="col-sm-4 text-center row">
+          <div class="col-sm-6 my-1">
+            <button
+              class="btn btn-sm btn-success px-3"
+              style="--bs-btn-font-size: 0.75rem"
+              [disabled]="sparePartForm.invalid"
+              (click)="saveSparePart()"
+            >
+              save
+            </button>
+          </div>
+          <div class="col-sm-6 my-1">
+            <button
+              (click)="cancelSparePart()"
+              class="btn btn-sm btn-secondary px-3"
+              style="--bs-btn-font-size: 0.75rem"
+            >
+              cancel
+            </button>
+          </div>
+        </div>
+        <div class="col-sm-4 text-center"></div>
+      </div>
+    </mat-dialog-content>
+  </div>
+</div>

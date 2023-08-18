@@ -1,0 +1,77 @@
+<ae-dashboard [title]="pageTitle">
+  <div id="row1col1" class="bg-light text-center rounded m-2 shadow">
+    <piechart
+      [chartTitile]="piechartTitle"
+      [data]="pieChartData"
+      [chartLabels]="piechartLabels"
+      [colors]="piechartColors"
+    >
+    </piechart>
+  </div>
+  <div id="row1col2" class="bg-light text-center rounded m-2 shadow">
+    <barchart
+      [labels]="barchartLabels"
+      [title]="barchartTitle"
+      [data]="barchartData"
+    ></barchart>
+  </div>
+  <div id="row2col1" class="my-3 px-2 overflow-auto border-end border-success border-2">
+    <p class="fs-5 fw-semibold fst-italic">Equipment under servicing</p>
+    <table datatable class="row-border hover">
+      <thead class="text-success">
+        <tr>
+          <th>Asset Number</th>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Department</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let equip of serviceEquip; let i = index"
+          class="text-start"
+        >
+          <td>{{ equip.assetNumber }}</td>
+          <td>{{ equip.name }}</td>
+          <td>{{ equip.location }}</td>
+          <td>{{ equip.department }}</td>
+          <td>
+            <span (click)="getServicingDetail(equip)" style="cursor: pointer"
+              ><fa-icon [icon]="eyeIcon"></fa-icon
+            ></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="row2col2" class="my-3 px-2 overflow-auto border-start border-success border-2">
+    <p class="fs-5 fw-semibold fst-italic">Pending Approvals</p>
+    <table datatable class="row-border hover">
+      <thead class="text-success">
+        <tr>
+          <th>Type</th>
+          <th>Sender</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let approval of pendingApprovals; let i = index"
+          class="text-center"
+        >
+          <td>{{ approval.type }}</td>
+          <td>{{ approval.sender }}</td>
+          <td>
+            <span
+              (click)="getApprovalDetail(approval)"
+              class="text-primary"
+              style="cursor: pointer"
+              ><fa-icon [icon]="eyeIcon"></fa-icon
+            ></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ae-dashboard>

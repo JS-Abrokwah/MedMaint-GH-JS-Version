@@ -1,0 +1,23 @@
+<div class="overflow-auto">
+    <table datatable class="row-border hover" >
+        <thead>
+            <tr class="text-success">
+                <th *ngFor="let column of tableColumn">{{ column }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let part of tableData" class="text-start">
+                <td>{{ part.serialNo }}</td>
+                <td>{{ part.name }}</td>
+                <td>{{ part.equipment }}</td>
+                <td>{{ part.quantity }}</td>
+                <td>{{ part.vendor }}</td>
+                <td>
+                    <span class="mx-1">Edit</span>
+                    <span class="mx-1">View</span>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+</div>

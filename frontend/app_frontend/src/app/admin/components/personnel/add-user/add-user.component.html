@@ -1,0 +1,276 @@
+<div
+  class="container-fluid text-center"
+  style="background-color: rgba(206, 244, 228, 1)"
+>
+  <h3 mat-dialog-title class="text-muted p-0 m-0 fw-bold">Add New Personnel</h3>
+  <mat-dialog-content>
+    <div class="pt-3">
+      <form [formGroup]="newUserForm">
+        <div class="row mb-3">
+          <div class="col-sm-4 text-center">
+            <label for="first_name" class="form-label">First name:</label>
+          </div>
+          <div class="col-sm-8 text-center">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="first_name"
+              [class.is-invalid]="firstName?.invalid && firstName?.touched"
+            />
+            <small
+              *ngIf="firstName?.invalid && firstName?.touched"
+              class="text-danger"
+            >
+              First name field is required
+            </small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-4 text-center">
+            <label for="surname" class="form-label">Surname:</label>
+          </div>
+          <div class="col-sm-8 text-center">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="surname"
+              [class.is-invalid]="surname?.invalid && surname?.touched"
+            />
+            <small
+              *ngIf="surname?.invalid && surname?.touched"
+              class="text-danger"
+            >
+              Surname field is required
+            </small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-4 text-center">
+            <label for="other_name" class="form-label">Other names:</label>
+          </div>
+          <div class="col-sm-8 text-center">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="other_name"
+            />
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-4 text-center">
+            <label for="email" class="form-label">Email:</label>
+          </div>
+          <div class="col-sm-8 text-center">
+            <input
+              type="email"
+              class="form-control form-control-sm"
+              formControlName="email"
+              [class.is-invalid]="email?.invalid && email?.touched"
+            />
+            <small *ngIf="email?.invalid && email?.touched" class="text-danger">
+              Email field is invalid
+            </small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-4 text-center">
+            <label for="phone" class="form-label">Phone number:</label>
+          </div>
+          <div class="col-sm-8 text-center">
+            <input
+              type="tel"
+              class="form-control form-control-sm"
+              formControlName="phone"
+              placeholder="e.g. +233540000000"
+              [class.is-invalid]="phone?.invalid && phone?.touched"
+            />
+            <small *ngIf="phone?.invalid && phone?.touched" class="text-danger">
+              Phone number field is invalid
+            </small>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-sm-4 text-center">
+            <label for="role" class="form-label">Role:</label>
+          </div>
+          <div class="col-sm-8 text-center">
+            <select2
+              formControlName="role"
+              [overlay]="select2Overlay"
+              [data]="newUserRoles"
+              styleMode="noStyle"
+              [minCountForSearch]="minCountForSearch"
+              [placeholder]="rolePlaceholder"
+              class="form-control form-control-sm"
+            >
+            </select2>
+            <small *ngIf="role?.invalid" class="text-danger">
+              Role is required
+            </small>
+          </div>
+        </div>
+        <div *ngIf="role?.value == 'Engineer'">
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="rank" class="form-label">Rank:</label>
+            </div>
+            <div class="col-sm-8 text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="rank"
+                [class.is-invalid]="rank?.invalid && rank?.touched"
+              />
+              <small *ngIf="rank?.invalid && rank?.touched" class="text-danger">
+                Rank field is required
+              </small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="dept_id" class="form-label"
+                >Department Assigned:</label
+              >
+            </div>
+            <div class="col-sm-8 text-center">
+              <select2
+              class="form-control form-control-sm"
+              formControlName="dept_id"
+              [overlay]="select2Overlay"
+              [data]="departmentList"
+              styleMode="noStyle"
+              [minCountForSearch]="minCountForSearch"
+              [placeholder]="deptPlaceholder"
+            >
+            </select2>
+              <small
+                *ngIf="deptId?.invalid && deptId?.touched"
+                class="text-danger"
+              >
+                No department selected
+              </small>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="role?.value == 'ESP'">
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="vendor_name" class="form-label">Company's name:</label>
+            </div>
+            <div class="col-sm-8 text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="vendor_name"
+                [class.is-invalid]="vendorName?.invalid && vendorName?.touched"
+              />
+              <small
+                *ngIf="vendorName?.invalid && vendorName?.touched"
+                class="text-danger"
+              >
+                Company's name field is required
+              </small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="vendor_email" class="form-label"
+                >Company's email:</label
+              >
+            </div>
+            <div class="col-sm-8 text-center">
+              <input
+                type="email"
+                class="form-control form-control-sm"
+                formControlName="vendor_email"
+                [class.is-invalid]="vendorEmail?.invalid && vendorEmail?.touched"
+              />
+              <small
+                *ngIf="vendorEmail?.invalid && vendorEmail?.touched"
+                class="text-danger"
+              >
+                Company's email field is invalid
+              </small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="vendor_phone" class="form-label"
+                >Company's phone number:</label
+              >
+            </div>
+            <div class="col-sm-8 text-center">
+              <input
+                type="tel"
+                placeholder="e.g. +233540000000"
+                class="form-control form-control-sm"
+                formControlName="vendor_phone"
+                [class.is-invalid]="vendorPhone?.invalid && vendorPhone?.touched"
+              />
+              <small
+                *ngIf="vendorPhone?.invalid && vendorPhone?.touched"
+                class="text-danger"
+              >
+                Company's phone number field is invalid
+              </small>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="vendor_address" class="form-label"
+                >Company's address:</label
+              >
+            </div>
+            <div class="col-sm-8 text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="vendor_address"
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="vendor_country" class="form-label">Company's country:</label>
+            </div>
+            <div class="col-sm-8 text-center">
+                <select2
+                [overlay]="select2Overlay"
+                [data]="countries"
+                styleMode="noStyle"
+                [minCountForSearch]="minCountForSearch"
+                [placeholder]="countryPlaceHolder"
+                class="form-control form-control-sm"
+                formControlName="vendor_country"
+              >
+              </select2>
+              <small
+                *ngIf="vendorCountry?.invalid"
+                class="text-danger"
+              >
+                Company's country field is required
+              </small>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+    <div class="pt-3 text-center">
+      <button
+        class="btn btn-sm btn-success mx-3"
+        style="--bs-btn-font-size: 0.75rem"
+        (click)="saveUser()"
+      >
+        Save
+      </button>
+      <button
+        class="btn btn-sm btn-secondary mx-3"
+        style="--bs-btn-font-size: 0.75rem"
+        (click)="onCancel()"
+      >
+        Cancel
+      </button>
+    </div>
+  </mat-dialog-content>
+</div>

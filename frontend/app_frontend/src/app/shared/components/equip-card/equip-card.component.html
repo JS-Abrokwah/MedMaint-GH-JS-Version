@@ -1,0 +1,27 @@
+<mat-card *ngFor="let equip of equipment">
+  <mat-card-content>
+    <table>
+      <thead>
+        <tr class="text-secondary">
+          <th>Equipment</th>
+          <th>Location</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="fw-semibold pt-1">
+            {{ equip.name }}
+            <p class="text-success pt-1">({{ equip.assetNumber }})</p>
+          </td>
+          <td>{{ equip.location }}</td>
+          <td>
+            <span class="btn btn-sm btn-link text-danger" (click)="reportEquip(equip)">
+              Report Equipment
+            </span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </mat-card-content>
+</mat-card>

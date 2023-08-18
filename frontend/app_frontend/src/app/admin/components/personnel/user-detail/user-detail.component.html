@@ -1,0 +1,199 @@
+<div
+  class="container-fluid p-3"
+  style="background-color: rgba(206, 244, 228, 1)"
+>
+  <div mat-dialog-content>
+    <div class="row">
+        <div class="col-10"></div>
+        <div class="col-2 text-center">
+            <span class="btn btn-outline-success btn-sm" (click)="closeDialog()"><fa-icon [icon]="closeIcon" size="lg"></fa-icon></span>
+        </div>
+    </div>
+    <div class="mb-3 text-center border-bottom border-secondary border-2">
+      <img
+        src="{{
+          data.profilePhoto
+            ? data.profilePhoto
+            : '../../../../../assets/other-img/user-markup.png'
+        }}"
+        style="width: 70px; height: 70px; border-radius: 50%"
+      />
+      <p class="fw-semibold mt-2 text-success">{{ data.userName }}</p>
+    </div>
+    <form [formGroup]="userForm">
+      <div class="row">
+        <div class="col-sm-6 text-center">
+          <div class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="email" class="form-label">Email:</label>
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="email"
+              />
+            </div>
+          </div>
+          <div *ngIf="role?.value == 'Engineer'" class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="rank" class="form-label">Rank:</label>
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="rank"
+              />
+            </div>
+          </div>
+          <div
+            *ngIf="role?.value == 'Clinician' || role?.value == 'Engineer'"
+            class="row mb-3"
+          >
+            <div class="col-sm-3 text-center">
+              <label for="deptName" class="form-label">Department:</label>
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="deptName"
+              />
+            </div>
+          </div>
+          <div *ngIf="role?.value == 'ESP'" class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="vendorEmail" class="form-label"
+                >Company's Email:</label
+              >
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="vendorEmail"
+              />
+            </div>
+          </div>
+          <div *ngIf="role?.value == 'ESP'" class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="vendorAddress" class="form-label"
+                >Company's Address:</label
+              >
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="vendorAddress"
+              />
+            </div>
+          </div>
+          <div *ngIf="role?.value == 'Clinician'" class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="dutyPost" class="form-label">Duty Post:</label>
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="dutyPost"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 text-center">
+          <div class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="phone" class="form-label">Phone:</label>
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="phone"
+              />
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="role" class="form-label">Role:</label>
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="role"
+              />
+            </div>
+          </div>
+          <div *ngIf="role?.value == 'ESP'" class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="vendorName" class="form-label">Company Name:</label>
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="vendorName"
+              />
+            </div>
+          </div>
+          <div *ngIf="role?.value == 'ESP'" class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="vendorPhone" class="form-label"
+                >Company's Phone:</label
+              >
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="vendorPhone"
+              />
+            </div>
+          </div>
+          <div *ngIf="role?.value == 'ESP'" class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="vendorCountry" class="form-label"
+                >Company's country:</label
+              >
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="vendorCountry"
+              />
+            </div>
+          </div>
+          <div *ngIf="role?.value == 'Clinician'" class="row mb-3">
+            <div class="col-sm-3 text-center">
+              <label for="profession" class="form-label">Profession:</label>
+            </div>
+            <div class="col-sm-9">
+              <input
+                readonly
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="profession"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

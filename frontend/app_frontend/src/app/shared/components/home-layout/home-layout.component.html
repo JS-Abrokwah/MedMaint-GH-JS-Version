@@ -1,0 +1,170 @@
+<div class="layout">
+  <div class="row border-bottom border-success border-2 toolbar">
+    <!-- Toolbar comes here -->
+    <div class="col-md-4 py-2">
+      <div class="w-75 logo ps-3">
+        <div class="logo-img">
+          <img src="../../assets/logo/logo.png" class="px-2 py-2" />
+        </div>
+        <h3 class="text-primary fw-bold fst-italic pt-3">MedMaint-GH</h3>
+        <span
+          *ngIf="isMobileScreen"
+          class="float-end btn btn-sm btn-outline-success"
+          (click)="isCollapsed = !isCollapsed"
+        >
+          <fa-icon [icon]="moreIcon" size="lg"></fa-icon>
+        </span>
+      </div>
+    </div>
+    <div
+      class="col-md-8 py-2"
+      [class.text-end]="isMobileScreen"
+      [class.pe-5]="isMobileScreen"
+    >
+      <div #collapse="ngbCollapse" [(ngbCollapse)]="isCollapsed">
+        <div class="row">
+          <div class="col-md-4 pt-3">
+            <p class="fw-semibold text-success">{{ user?.hospName }}</p>
+          </div>
+          <div class="col-md-4 pt-3">
+            <p class="text-black fw-semibold">{{ today }}</p>
+          </div>
+          <div class="col-md-4 row pt-3">
+            <div class="col-4 text-center">
+              <span
+                matBadge="{{ notificationCount }}"
+                matBadgeHidden="{{ noNewNotification }}"
+                style="cursor: pointer"
+                (click)="toggleNotifications(notify)"
+              >
+                <fa-icon
+                  [icon]="bellIcon"
+                  animation="shake"
+                  size="lg"
+                ></fa-icon>
+              </span>
+            </div>
+            <div class="col-4 px-0 row">
+              <div class="col-6">
+                <div class="userInitial">
+                  <p class="fw-semibold text-success p-2">
+                    {{ user?.userInitials}}
+                  </p>
+                </div>
+              </div>
+              <div class="col-6">
+                <span class="text-success btn" (click)="openProfile=!openProfile">
+                  <fa-icon [icon]="caretIcon"></fa-icon>
+                </span>
+              </div>
+            </div>
+            <div class="col-4 text-center">
+              <p class="fw-semibold">{{ user?.role }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div class="row">
+      <div
+        #collapse="ngbCollapse"
+        [(ngbCollapse)]="isSidenavCollapsed"
+        [horizontal]="true"
+        class="col bg-success sidenav"
+      >
+          <div class="navItem text-center text-light fw-semibold fs-6 mb-3">
+
+            <ng-content select="#sidenav"></ng-content>
+          </div>
+          <div class="d-flex flex-column text-center logoutDiv">
+            <a
+              class="fs-5 fw-semibold text-light text-decoration-none py-3 logout"
+              (click)="handleLogOut()"
+              ><fa-icon
+                [icon]="logoutIcon"
+                flip="horizontal"
+                size="lg"
+              ></fa-icon>
+              Log Out</a
+            >
+            <a href="mailto:medmaintgh@gmail.com" class="text-warning pt-3 pb-5"
+            >Get Support</a
+            >
+            <a (click)="feedbackForm()" class="text-primary pt-3 p-3 ms-5 bg-light fw-semibold" style="cursor: pointer; width: 60%;"
+              >Send Feedback</a
+            >
+          </div>
+        <div class="py-3 text-center bg-light brand">
+          <span class="text-muted fst-italic">Powered by: </span>
+          <img
+            src="../../../assets/logo/logo.png"
+            style="width: 20px; height: 20px"
+          />
+          <span class="text-primary fst-italic fw-semibold">MedMaint-GH</span>
+        </div>
+      </div>
+      <div class="col px-5">
+        <span
+          class="mt-2 btn btn-sm btn-outline-success"
+          (click)="isSidenavCollapsed = !isSidenavCollapsed"
+        >
+          <fa-icon [icon]="barIcon" size="lg"></fa-icon>
+        </span>
+        <a (click)="feedbackForm()" class="text-primary pt-3 p-3 ms-5 fw-semibold" style="cursor: pointer;;"
+              >Send Feedback</a
+            >
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+  <ng-template #notify let-offcanvas>
+    <div class="offcanvas-header text-light">
+      <h2 class="offcanvas-title">Notifications</h2>
+      <button
+        type="button"
+        class="btn btn-outline-light"
+        aria-label="Close"
+        (click)="offcanvas.dismiss()"
+      >
+        <fa-icon [icon]="closeIcon" size="lg"></fa-icon>
+      </button>
+    </div>
+    <div class="offcanvas-body">
+      <div *ngFor="let notify of notifications; let i = index">
+        <mat-card class="mb-2 py-1 bg-light">
+          <mat-card-header>
+            <mat-card-title
+              ><p>{{ notify.title }}</p></mat-card-title
+            >
+          </mat-card-header>
+          <mat-card-content>
+            <div class="row">
+              <div class="col-2 text-{{ notify.flag }}">
+                <fa-icon [icon]="flagIcon" size="2x"></fa-icon>
+              </div>
+              <div class="col-10 px-0">
+                <p>
+                  {{ notify.content }}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <p class="fst-italic text-muted fw-semibold">
+                  <span>Sender: </span> {{ notify.sender }}
+                </p>
+              </div>
+              <div class="col-6">
+                <small class="text-success">
+                  {{ notify.timestamp }}
+                </small>
+              </div>
+            </div>
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </ng-template>
+</div>

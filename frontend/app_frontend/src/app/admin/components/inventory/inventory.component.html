@@ -1,0 +1,106 @@
+<div *ngIf="!isViewEquip">
+  <div class="row">
+    <div class="col-sm-8 text-start">
+      <h1 class="ps-5 fw-semibold">Inventory</h1>
+    </div>
+    <div class="col-sm-4 text-center">
+      <button
+        class="btn btn-sm btn-warning mx-3 my-1"
+        style="--bs-btn-font-size: 0.75rem"
+        (click)="addNewPart()"
+      >
+        <fa-icon [icon]="plusIcon" size="lg"></fa-icon>
+        Spare part
+      </button>
+      <button
+        class="btn btn-sm btn-success mx-3 my-1"
+        style="--bs-btn-font-size: 0.75rem"
+        (click)="addNewEquip()"
+      >
+        <fa-icon [icon]="plusIcon" size="lg"></fa-icon>
+        Equipment
+      </button>
+    </div>
+  </div>
+  <tabs-renderer [tabs]="tabs">
+    <div id="tab-0-content">
+      <div class="overflow-auto">
+        <table class="row-border hover" id="equipmentListings">
+          <thead>
+            <tr class="text-success">
+              <th *ngFor="let column of equipmentColumn">{{ column }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let equip of equipmentData" class="text-start">
+              <td>{{ equip.assetNumber }}</td>
+              <td>{{ equip.equipName }}</td>
+              <td>{{ equip.location }}</td>
+              <td>{{ equip.departmentName }}</td>
+              <td>{{ equip.condition }}</td>
+              <td>{{ equip.manufacturerName }}</td>
+              <td>
+                <span
+                  style="cursor: pointer"
+                  (click)="editEquip(equip)"
+                  class="mx-2 text-primary"
+                  ><fa-icon [icon]="penIcon"></fa-icon
+                ></span>
+                <span
+                  style="cursor: pointer"
+                  (click)="viewEquip(equip)"
+                  class="mx-2 text-success"
+                  ><fa-icon [icon]="eyeIcon"></fa-icon
+                ></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="tab-1-content">
+      <div class="overflow-auto">
+        <table  class="row-border hover" datatable>
+          <thead>
+            <tr class="text-success">
+              <th *ngFor="let column of partsColumn">{{ column }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let part of partsData" class="text-start">
+              <td>{{ part.serial_number }}</td>
+              <td>{{ part.part_name }}</td>
+              <td>{{ part.asset_number }}</td>
+              <td>{{ part.current_quantity }}</td>
+              <td>{{ part.vendor_name }}</td>
+              <td>
+                <span
+                  style="cursor: pointer"
+                  (click)="viewPart(part)"
+                  class="mx-2 text-success"
+                  ><fa-icon [icon]="eyeIcon"></fa-icon
+                ></span>
+                <span
+                  style="cursor: pointer"
+                  (click)="editPart(part)"
+                  class="mx-2 text-primary"
+                  ><fa-icon [icon]="penIcon"></fa-icon
+                ></span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div id="tab-2-content">Content 2</div>
+    <div id="tab-3-content">Content 3</div>
+    <div id="tab-4-content">Content 4</div>
+    <div id="tab-5-content">Content 5</div>
+    <div id="tab-6-content">Content 6</div>
+  </tabs-renderer>
+</div>
+<div *ngIf="isViewEquip">
+  <equip-details (back)="backFromEquip($event)">
+
+  </equip-details>
+</div>

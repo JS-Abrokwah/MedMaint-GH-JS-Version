@@ -1,0 +1,19 @@
+<div class="container-fluid shared-dashboard">
+  <p class="fw-bold fs-4 text-dark py-2">{{ title }}</p>
+  <div class="row py-1">
+    <div class="col-sm text-center">
+      <ng-content select="#row1col1"></ng-content>
+    </div>
+    <div class="col-sm text-center">
+      <ng-content select="#row1col2"></ng-content>
+    </div>
+  </div>
+  <div class="row py-1">
+    <div class="col-sm-6 text-center">
+      <ng-content select="#row2col1"></ng-content>
+    </div>
+    <div class="col-sm-6 text-center">
+      <ng-content select="#row2col2"></ng-content>
+    </div>
+  </div>
+</div>

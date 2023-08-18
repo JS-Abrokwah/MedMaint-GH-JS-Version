@@ -1,0 +1,59 @@
+<div class="row container-fluid">
+  <div class="col-sm-8">
+    <mat-card *ngFor="let equip of equipment">
+      <mat-card-content>
+        <table>
+          <thead class="col-sm-3">
+            <tr class="text-secondary">
+              <th>Equipment</th>
+              <th>Location</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-semibold pt-1">
+                {{ equip.name }}
+                <p class="text-success pt-1">({{ equip.assetNumber }})</p>
+              </td>
+              <td>{{ equip.location }}</td>
+              <td>
+                <span
+                  class="btn btn-sm btn-link text-danger"
+                  (click)="reportEquip(equip)"
+                >
+                  Report Equipment
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="col-sm-4">
+    <mat-card>
+      <div style="text-decoration: underline">
+        <div class="row">
+          <div class="col-md-6">
+            <button class="btn btn-sm fw-semibold text-danger btn-link py-1" style="--bs-btn-font-size:0.75rem">
+              Log Complaint
+            </button>
+          </div>
+          <div class="col-md-6">
+            <button class="btn btn-sm fw-semibold text-success btn-link py-1" style="--bs-btn-font-size:0.75rem">
+              Service Request
+            </button>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h2>
+          Ing. Kwasi Mensah is demanding service request
+          <button class="btn btn-sm fw-semibold text-success btn-link py-1" style="--bs-btn-font-size:0.75rem">
+            Send Service Request
+          </button>
+        </h2>
+      </div>
+    </mat-card>
+</div>

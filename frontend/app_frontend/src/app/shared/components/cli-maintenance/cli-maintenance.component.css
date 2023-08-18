@@ -1,0 +1,8 @@
+mat-card{
+    background-color: rgba(206, 244, 228, 1);
+    margin-bottom: 10px;
+}
+table{
+    width: 100%;
+    background: transparent !important;
+}

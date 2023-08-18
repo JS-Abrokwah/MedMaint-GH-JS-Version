@@ -1,0 +1,27 @@
+<home-layout [user]="user">
+    <div id="sidenav" class="d-flex flex-column">
+        <div class="my-4">
+          <a routerLink="dashboard" class="p-3 text-light text-decoration-none" [class.bg-primary]="dashactive" (click)="onChangeRoute()"
+            ><fa-icon [icon]="dashboardIcon" size="lg"></fa-icon> Dashboard</a
+          >
+        </div>
+        <div class="my-4">
+          <a routerLink="inventory" class="p-3 text-light text-decoration-none" [class.bg-primary]="inventactive" (click)="onChangeRoute()"
+            ><fa-icon [icon]="inventoryIcon" size="lg"></fa-icon> Inventory</a
+          >
+        </div>
+        <div class="my-4">
+          <a routerLink="cm" class="p-3 text-light text-decoration-none" [class.bg-primary]="deptactive"  (click)="onChangeRoute()"
+            ><fa-icon [icon]="cmIcon" size="lg"></fa-icon> Repairs</a
+          >
+        </div>
+        <div class="my-4">
+          <a
+            routerLink="ppm"
+            class="p-3 text-light text-decoration-none" [class.bg-primary]="maintactive" (click)="onChangeRoute()"
+            ><fa-icon [icon]="ppmIcon" size="lg"></fa-icon>  PPM</a
+          >
+        </div>
+      </div>
+    <router-outlet></router-outlet>
+</home-layout>

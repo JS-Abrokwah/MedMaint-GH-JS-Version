@@ -1,0 +1,12 @@
+div{
+  font-family: 'Poppins', sans-serif;
+}
+
+.login-card{
+    background-color: rgba(206, 244, 228, 1);
+    border-radius: 10px;
+}
+.pointer{
+  cursor: pointer;
+}
+

@@ -1,0 +1,149 @@
+<div class="contianer-fluid">
+  <div class="login-card text-center px-3 py-3">
+    <h3 mat-dialog-title class="text-muted p-0 m-0 fw-bold">
+      Welcome to <span class="fst-italic fs-3">MedMaint-GH</span>
+    </h3>
+    <p class="text-muted fst-italic p-0 m-0">Login to see latest updates</p>
+
+    <mat-dialog-content>
+      <div class="pt-3">
+        <form [formGroup]="loginForm">
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="role" class="form-label fst-italic"
+                >Login As <span class="text-danger">*</span></label
+              >
+            </div>
+            <div class="col-sm-8">
+              <select2
+                formControlName="role"
+                [overlay]="select2Overlay"
+                [data]="userRole"
+                styleMode="noStyle"
+                [minCountForSearch]="minCountForSearch"
+                [placeholder]="selected"
+                class="form-control form-control-sm"
+              >
+              </select2>
+              <div class="text-center" *ngIf="role?.invalid">
+                <small class="text-danger">No role selected!</small>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="role?.value === 'Clinician'" class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="dept_key" class="form-label fst-italic"
+                >Department Key<span class="text-danger">*</span></label
+              >
+            </div>
+            <div class="col-sm-8">
+              <input
+                formControlName="dept_key"
+                type="text"
+                class="form-control form-control-sm"
+                [class.is-invalid]="
+                  role?.value == 'Clinician' && !deptKey?.value
+                "
+              />
+              <div
+                class="text-center"
+                *ngIf="role?.value === 'Clinician' && !deptKey?.value"
+              >
+                <small class="text-danger">Department Key is required</small>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-sm-4 text-center">
+              <label for="email" class="form-label fst-italic"
+                >Email <span class="text-danger">*</span></label
+              >
+            </div>
+            <div class="col-sm-8">
+              <input
+                type="email"
+                class="form-control form-control-sm"
+                formControlName="email"
+                [class.in-invalid]="email?.invalid && email?.touched"
+              />
+              <div class="text-center" *ngIf="email?.invalid && email?.touched">
+                <small class="text-danger">Email address is invalid</small>
+              </div>
+            </div>
+          </div>
+          <div class="row mb-1">
+            <div class="col-sm-4 text-center">
+              <label for="role" class="form-label fst-italic"
+                >Password<span class="text-danger">*</span></label
+              >
+            </div>
+            <div class="col-sm-8">
+              <input
+                type="password"
+                class="form-control form-control-sm"
+                formControlName="password"
+                [class.is-invalid]="password?.invalid && password?.touched"
+              />
+              <div
+                class="text-center"
+                *ngIf="password?.invalid && password?.touched"
+              >
+                <small class="text-danger">Password is required</small>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row mt-2">
+        <div class="col-6"></div>
+        <div class="col-6">
+          <a
+            class="text-end fst-italic text-decoration-underline pointer text-secondary"
+            (click)="onForgotBtnClick()"
+            >Forgotten Password?</a
+          >
+        </div>
+      </div>
+      <div class="mt-3">
+        <button
+          class="btn btn-success btn-sm rounded-pill fst-italic px-5 text-light"
+          (click)="handleLogin()"
+          [disabled]="
+            loginForm.invalid || (!deptKey?.value && role?.value == 'Clinician')
+          "
+        >
+          Log in
+        </button>
+      </div>
+      <div class="my-3 text-center row">
+        <p class="text-muted fst-italic p-0 m-0">Don't have an account?</p>
+        <div class="col-6 mt-1 text-center">
+          <span
+            class="btn btn-sm btn-link text-success fst-italic"
+            (click)="onRegisterBtnClick()"
+          >
+            Register Hospital
+          </span>
+        </div>
+        <div class="col-6 mt-1 text-center">
+          <span
+            class="btn btn-sm btn-link fst-italic"
+            (click)="onClinicianBtnClick()"
+          >
+            Register As Clinician
+          </span>
+        </div>
+      </div>
+      <div class="mt-3">
+        <span class="text-muted fst-italic">Powered by: </span>
+        <img
+          src="../../../assets/logo/logo.png"
+          style="width: 30px; height: 30px"
+        />
+        <span class="text-primary fst-italic fw-semibold fs-6"
+          >MedMaint-GH</span
+        >
+      </div>
+    </mat-dialog-content>
+  </div>
+</div>

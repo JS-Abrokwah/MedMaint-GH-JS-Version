@@ -1,0 +1,399 @@
+<div
+  class="container px-3 py-3"
+  style="background-color: rgba(206, 244, 228, 1); max-width: 70vw"
+>
+  <div class="text-center" style="border-bottom: 1px solid black">
+    <h2
+      mat-dialog-title
+      class="text-muted fw-semibold mb-0"
+      style="text-decoration: underline"
+    >
+      New Equipment
+    </h2>
+  </div>
+  <mat-dialog-content>
+    <form [formGroup]="registrationForm">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Asset Number:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="assetNumber?.invalid && assetNumber?.touched"
+              formControlName="assetNumber"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="assetNumber?.invalid && assetNumber?.touched"
+            >
+              <small>Asset Number field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Equipment Name:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                equipmentName?.invalid && equipmentName?.touched
+              "
+              formControlName="equipmentName"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="equipmentName?.invalid && equipmentName?.touched"
+            >
+              <small>Equipment Name field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Serial Number:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="serialNumber"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Location:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              placeholder="e.g. Theater 1"
+              [class.is-invalid]="location?.invalid && location?.touched"
+              formControlName="location"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="location?.invalid && location?.touched"
+            >
+              <small>Location field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Department:</label>
+            <select2
+              class="form-control form-control-sm"
+              formControlName="department"
+              [overlay]="select2Overlay"
+              [data]="departmentList"
+              styleMode="noStyle"
+              [minCountForSearch]="minCountForSearch"
+              [placeholder]="deptPlaceholder"
+            >
+            </select2>
+            <div class="text-danger text-center" *ngIf="department?.invalid">
+              <small>No department selected</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Country of Origin:</label>
+            <select2
+              formControlName="countryOfOrigin"
+              [overlay]="select2Overlay"
+              [data]="country"
+              styleMode="noStyle"
+              [minCountForSearch]="minCountForSearch"
+              [placeholder]="selected"
+              class="form-control form-control-sm"
+            >
+            </select2>
+            <div
+              class="text-danger text-center"
+              *ngIf="countryOfOrigin?.invalid"
+            >
+              <small>No country selected</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Expected Lifespan:</label>
+            <div class="row">
+              <div class="col-4 pe-3">
+                <input
+                  type="number"
+                  min="1"
+                  step="1"
+                  class="form-control form-control-sm"
+                  [class.is-invalid]="
+                    lifespanNum?.invalid && lifespanNum?.touched
+                  "
+                  formControlName="lifespanNum"
+                />
+              </div>
+              <div class="col-8">
+                <select
+                  class="form-select form-select-sm"
+                  formControlName="lifespanScale"
+                >
+                  <option value="Days">Days</option>
+                  <option value="Weeks">Weeks</option>
+                  <option value="Months">Months</option>
+                  <option value="Years">Years</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Condition:</label>
+            <select
+              class="form-select form-select-sm"
+              formControlName="condition"
+              [class.is-invalid]="condition?.invalid && condition?.touched"
+            >
+              <option value="Functional">Functional</option>
+              <option value="Faulty">Fualty</option>
+              <option value="Under Repair">Under Repair</option>
+              <option value="Uninstalled">Uninstalled</option>
+            </select>
+            <div
+              class="text-danger text-center"
+              *ngIf="condition?.invalid && condition?.touched"
+            >
+              <small>Condition field is required</small>
+            </div>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Equipment Model:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="model"
+              [class.is-invalid]="model?.invalid && model?.touched"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="model?.invalid && model?.touched"
+            >
+              <small>Equipment Model field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Manufacturer:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                manufacturer?.invalid && manufacturer?.touched
+              "
+              formControlName="manufacturer"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="manufacturer?.invalid && manufacturer?.touched"
+            >
+              <small>Manufacturer field is required</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="mb-3">
+            <label class="form-label">Year of Manufacture:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                manufacturingYear?.invalid && manufacturingYear?.touched
+              "
+              formControlName="manufacturingYear"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="manufacturingYear?.invalid && manufacturingYear?.touched"
+            >
+              <small>Year of Manufacture field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Equipment Type:</label>
+            <select
+              class="form-select form-select-sm"
+              formControlName="type"
+              [class.is-invalid]="type?.invalid && type?.touched"
+            >
+              <option value="Life support">Life support</option>
+              <option value="Imaging">Imaging</option>
+              <option value="Monitoring">Monitoring</option>
+              <option value="Therapeutic">Therapeutic</option>
+              <option value="Diagnostic">Diagnostic</option>
+              <option value="Physiotherapeutic">Physiotherapeutic</option>
+              <option value="Ambulatory">Ambulatory</option>
+            </select>
+            <div
+              class="text-danger text-center"
+              *ngIf="type?.invalid && type?.touched"
+            >
+              <small>Equipment Type field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">PPM Interval:</label>
+            <div class="row">
+              <div class="col-4 pe-3">
+                <input
+                  type="number"
+                  min="1"
+                  step="1"
+                  class="form-control form-control-sm"
+                  [class.is-invalid]="
+                    ppmIntervalNum?.invalid && ppmIntervalNum?.touched
+                  "
+                  formControlName="ppmIntervalNum"
+                />
+              </div>
+              <div class="col-8">
+                <select
+                  class="form-select form-select-sm"
+                  formControlName="ppmIntervalScale"
+                >
+                  <option value="Days">Days</option>
+                  <option value="Weeks">Weeks</option>
+                  <option value="Months">Months</option>
+                  <option value="Years">Years</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Date Installed:</label>
+            <input
+              type="date"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                dateInstalled?.invalid && dateInstalled?.touched
+              "
+              formControlName="dateInstalled"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="dateInstalled?.invalid && dateInstalled?.touched"
+            >
+              <small>Date Installed field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Remark:</label>
+            <textarea
+              class="form-control form-control-sm"
+              [class.is-invalid]="remark?.invalid && remark?.touched"
+              formControlName="remark"
+              cols="60"
+              rows="2"
+              placeholder="Write your remark on the equipment here ..."
+            ></textarea>
+            <div
+              class="text-danger text-center"
+              *ngIf="remark?.invalid && remark?.touched"
+            >
+              <small>Remark field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Vendor's Name:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="vendorName?.invalid && vendorName?.touched"
+              formControlName="vendorName"
+              placeholder="Enter vendor's company name"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="vendorName?.invalid && vendorName?.touched"
+            >
+              <small>Vendor's Name field is required</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Vendor's Email:</label>
+            <input
+              type="email"
+              class="form-control form-control-sm"
+              formControlName="vendorEmail"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="vendorEmail?.invalid && vendorEmail?.touched"
+            >
+              <small>Vendor's Email field is either empty or invalid</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Vendor's Country:</label>
+            <select2
+              formControlName="vendorCountry"
+              [overlay]="select2Overlay"
+              [data]="country"
+              styleMode="noStyle"
+              [minCountForSearch]="minCountForSearch"
+              [placeholder]="selected"
+              class="form-control form-control-sm"
+            >
+            </select2>
+            <div class="text-danger text-center" *ngIf="vendorCountry?.invalid">
+              <small>No country selected</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Vendor's Address:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="vendorAddress"
+            />
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Vendor's Phone:</label>
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="vendorTel"
+              placeholder="+23354*******"
+              [class.is-invalid]="vendorTel?.invalid && vendorTel?.touched"
+            />
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="row">
+      <div class="col-sm-4 text-center"></div>
+      <div class="col-sm-4 text-center row">
+        <div class="col-sm-6 my-1">
+          <button
+            class="btn btn-sm btn-success px-3"
+            style="--bs-btn-font-size: 0.75rem"
+            [disabled]="registrationForm.invalid"
+            (click)="saveEquip()"
+          >
+            save
+          </button>
+        </div>
+        <div class="col-sm-6 my-1">
+          <button
+            (click)="cancelEquip()"
+            class="btn btn-sm btn-secondary px-3"
+            style="--bs-btn-font-size: 0.75rem"
+          >
+            cancel
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-4 text-center"></div>
+    </div>
+  </mat-dialog-content>
+</div>

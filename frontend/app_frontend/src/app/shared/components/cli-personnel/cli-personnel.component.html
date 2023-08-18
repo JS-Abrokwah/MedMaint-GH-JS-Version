@@ -1,0 +1,42 @@
+<mat-card *ngFor="let person of personnel" class="mb-2">
+  <mat-card-content>
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="text-center">
+
+          <div class="avatar">
+            <img src="{{person?.profile_photo||'../../../../../../assets/other-img/user-markup.png'}}" alt="Profile Picture" />
+          </div>
+          <p class="text-success fw-semibold">{{person?.userName}}</p>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <table>
+          <thead>
+            <tr class="text-secondary">
+              <th>Role</th>
+              <th>Contact</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="fw-semibold">
+                {{ person?.role }}
+              </td>
+              <td class="fw-semibold">{{ person?.phone }}</td>
+              <td class="text-center">
+                <span class="btn btn-sm btn-link text-danger mx-1" (click)="reportPersonel(person)">
+                  Report
+                </span>
+                <span class="btn btn-sm btn-link mx-1" (click)="openMsgSender(person)">
+                  Send message
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

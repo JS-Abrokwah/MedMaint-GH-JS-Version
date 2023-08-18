@@ -1,0 +1,42 @@
+<tabs-renderer [tabs]="tabs">
+  <div id="tab-0-content">
+    <div class="overflow-auto">
+      <table class="row-border hover" id="equipmentListings">
+        <thead>
+          <tr class="text-success">
+            <th *ngFor="let column of equipmentColumn">{{ column }}</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let equip of equipmentData" class="text-start">
+            <td>{{ equip.assetNumber }}</td>
+            <td>{{ equip.equipName }}</td>
+            <td>{{ equip.location }}</td>
+            <td>{{ equip.departmentName }}</td>
+            <td>{{ equip.condition }}</td>
+            <td>{{ equip.manufacturerName }}</td>
+            <td>
+              <span
+                style="cursor: pointer"
+                (click)="editEquip(equip)"
+                class="mx-2 text-primary"
+                ><fa-icon [icon]="penIcon"></fa-icon
+              ></span>
+              <span
+                style="cursor: pointer"
+                (click)="viewEquip(equip)"
+                class="mx-2 text-success"
+                ><fa-icon [icon]="eyeIcon"></fa-icon
+              ></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</tabs-renderer>
+<div>
+  <equip-detail>
+    
+  </equip-detail>
+</div>

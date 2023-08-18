@@ -1,0 +1,49 @@
+<mat-card class="shadow my-3" style="background-color: rgba(206, 244, 228, 1)">
+  <mat-card-content>
+    <div class="row py-3">
+      <div class="col-sm-3 text-center">
+        <img
+          src="{{
+            person.profilePhoto
+              ? person.profilePhoto
+              : '../../../../../assets/other-img/user-markup.png'
+          }}"
+          style="width: 50px; height: 50px; border-radius: 50%"
+        />
+        <p class="fw-semibold text-success">{{ person.userName }}</p>
+      </div>
+      <div class="col-sm-9 overflow-auto">
+        <table style="width: 100%;">
+            <thead>
+              <tr class="text-secondary text-center">
+                <th>Role</th>
+                <th>{{ person.role == 'ESP'?'Company Name':'Department' }}</th>
+                <th>Contact</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-center pt-2">
+                <td class="fw-semibold">
+                  {{ person.role }}
+                </td>
+                <td class="fw-semibold">{{ person.role=='ESM'?person.vendorName:person.deptName }}</td>
+                <td class="fw-semibold">{{ person.phone }}</td>
+                <td>
+                    <span class="btn btn-sm text-success mx-1" (click)="onView()">
+                        <fa-icon [icon]="eyeIcon" size="lg"></fa-icon>
+                    </span>
+                    <span class="btn btn-sm text-primary mx-1" (click)="onMail()">
+                        <fa-icon [icon]="mailIcon" size="lg"></fa-icon>
+                    </span>
+                    <span class="btn btn-sm text-danger mx-1" (click)="onDelete()">
+                      <fa-icon [icon]="deleteIcon" size="lg"></fa-icon>
+                    </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

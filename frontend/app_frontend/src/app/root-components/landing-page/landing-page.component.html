@@ -1,0 +1,91 @@
+<div class="row">
+  <div [routerLink]="['/welcome']" class="logo">
+    <img src="../../assets/logo/logo.png" class="px-3 py-3" />
+    <h1 class="text-primary fw-bold fst-italic">MedMaint-GH</h1>
+  </div>
+</div>
+<div>
+  <ngb-carousel [keyboard]="keyboard" [pauseOnHover]="pauseOnHover" [pauseOnFocus]="pauseOnFocus">
+    <ng-template ngbSlide>
+      <div class="car-div car-div-1"></div>
+      <div class="carousel-caption car-text row mt-5">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center text-wrap rounded mt-5">
+          <h1 class="fw-bold text-dark">
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+          </h1>
+          <h1 class="fw-bold text-dark px-3">Inventory Manager</h1>
+          <p class="fst-italic fs-5 fw-semibold text-primary">
+            Complete inventory management features for medical equipment...
+          </p>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="car-div car-div-2"></div>
+      <div class="carousel-caption row mt-5 car-text">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center text-wrap rounded mt-5">
+          <h1 class="fw-bold text-dark">
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+          </h1>
+          <h1 class="fw-bold text-dark px-3">Maintenance Manager</h1>
+          <p class="fst-italic fs-5 fw-semibold text-primary">
+            Plan, schedule, implement and track medical equipment maintenance processes...
+          </p>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="car-div car-div-3"></div>
+      <div class="carousel-caption row mt-5 car-text">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center text-wrap rounded mt-5">
+          <h1 class="fw-bold text-dark">
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+          </h1>
+          <h1 class="fw-bold text-dark px-3">Documentation</h1>
+          <p class="fst-italic fs-5 fw-semibold text-primary">
+            Digitally document maintenance activities and generate reports...
+          </p>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </ng-template>
+    <ng-template ngbSlide>
+      <div class="car-div car-div-4"></div>
+      <div class="carousel-caption row mt-5 car-text">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 text-center text-wrap rounded mt-5">
+          <h1 class="fw-bold text-dark">
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+            <span class="mx-3 text-primary fs-1 fst-italic">.</span>
+          </h1>
+          <h1 class="fw-bold text-dark px-3">Analytics and Visualization</h1>
+          <p class="fst-italic fs-5 fw-semibold text-primary">
+            Get analytic information on equipment performance and utilization...
+          </p>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </ng-template>
+  </ngb-carousel>
+</div>
+<div class="row get-started">
+  <div class="col-md-4"></div>
+  <div class="col-md-4 text-center">
+    <button class="btn btn-sm btn-primary px-5 rounded-pill" (click)="getStarted()">
+      Register / Log in
+    </button>
+  </div>
+  <div class="col-md-4"></div>
+</div>

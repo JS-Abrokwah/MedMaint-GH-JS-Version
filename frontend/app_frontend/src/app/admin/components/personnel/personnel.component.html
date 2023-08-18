@@ -1,0 +1,20 @@
+<div class="container-fluid">
+    <div class="row m-0">
+        <div class="col-sm-9 text-start">
+          <h1 class="ps-5 fw-semibold">Personnel Catalog</h1>
+        </div>
+        <div class="col-sm-3 text-center">
+          <button
+            class="btn btn-sm btn-success mx-3 my-1"
+            style="--bs-btn-font-size: 0.85rem"
+            (click)="addPerson()"
+          >
+            <fa-icon [icon]="plusIcon" size="lg"></fa-icon>
+            Personnel
+          </button>
+        </div>
+      </div>
+  <div class="bg-light p-3 mt-1 rounded">
+    <person-card *ngFor="let person of persons" [person]="person" (remove)="removePerson($event)" (sendMail)="mailPerson($event)" (view)="viewPerson($event)"></person-card>
+  </div>
+</div>

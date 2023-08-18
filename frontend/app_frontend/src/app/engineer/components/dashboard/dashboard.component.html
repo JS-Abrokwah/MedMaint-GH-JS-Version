@@ -1,0 +1,80 @@
+<ae-dashboard [title]="pageTitle">
+    <div id="row1col1" class="bg-light text-center rounded m-2 shadow">
+      <piechart
+        [chartTitile]="piechartTitle"
+        [data]="pieChartData"
+        [chartLabels]="piechartLabels"
+        [colors]="piechartColors"
+      >
+      </piechart>
+    </div>
+    <div id="row1col2" class="overflow-auto my-3 px-2">
+      <p class="fs-5 fw-semibold fst-italic">Activities in Progress</p>
+      <table datatable class="row-border hover">
+        <thead class="text-success">
+          <tr class="text-center">
+            <th>Activity</th>
+            <th>Equipment</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let activity of activities" class="text-center">
+            <td>{{ activity?.title }}</td>
+            <td>{{ activity?.equipment?.asset_number }}</td>
+            <td>
+              <span class="text-success" (click)="showActivity(activity)" style="cursor: pointer"
+                ><fa-icon [icon]="eyeIcon"></fa-icon
+              ></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="row2col1" class="overflow-auto my-3 px-2 border-end border-success border-2">
+      <p class="fs-5 fw-semibold fst-italic">Equipment</p>
+      <table id="deptTable" class="row-border hover">
+        <thead class="text-success">
+          <tr class="text-center">
+            <th>Asset Number</th>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Condition</th>
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let equipment of equipments" class="text-center">
+              <td>{{ equipment?.assetNumber }}</td>
+              <td>{{ equipment?.equipName }}</td>
+              <td>{{ equipment?.location }}</td>
+              <td>{{ equipment?.condition }}</td>
+              <td><span (click)="showEquipment(equipment)" class="text-success" style="cursor: pointer;"><fa-icon [icon]="eyeIcon"></fa-icon></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div id="row2col2" class="overflow-auto my-3 px-2 border-start border-success border-2">
+      <p class="fs-5 fw-semibold fst-italic">Upcoming PPM</p>
+      <table datatable class="row-border hover">
+        <thead class="text-success">
+          <tr class="text-center">
+            <th>PPM ID</th>
+            <th>Due Date</th>
+            <th>Plan</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let event of events" class="text-center">
+            <td>{{ event?.ppm_id }}</td>
+            <td>{{ event?.due_date }}</td>
+            <td>
+              <span class="text-success" (click)="showEvent(event)" style="cursor: pointer"
+                ><fa-icon [icon]="eyeIcon"></fa-icon
+              ></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </ae-dashboard>

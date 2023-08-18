@@ -1,0 +1,15 @@
+<div class="row mt-3">
+  <div class="col-sm-1 text-center">
+    <button class="btn btn-sm btn-outline-success" (click)="goBack()">
+      <fa-icon [icon]="backArrow" size="lg"></fa-icon>
+    </button>
+  </div>
+  <div class="col-sm-11 text-start">
+    <h1 class="fw-semibold">
+      Inventory > Equipment {{ equipment?.asset_number }}
+    </h1>
+  </div>
+</div>
+<tabs-renderer [tabs]="tabs">
+  
+</tabs-renderer>

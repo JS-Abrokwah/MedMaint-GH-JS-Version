@@ -1,0 +1,29 @@
+# Compiled output
+/tmp
+/out-tsc
+/bazel-out
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# Visual Studio Code
+.vscode
+.vscode/*
+.vscode/settings.json
+.vscode/tasks.json
+.vscode/launch.json
+.vscode/extensions.json
+.history/*
+
+# System files
+.DS_Store
+Thumbs.db

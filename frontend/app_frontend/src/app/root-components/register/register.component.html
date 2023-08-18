@@ -1,0 +1,291 @@
+<div style="background-color: rgba(206, 244, 228, 1)" class="overflow-auto">
+  <div class="text-center pt-3">
+    <div class="mx-5 text-center">
+      <h3 mat-dialog-title class="text-muted p-0 m-0 fw-bold">
+        Welcome to <span class="fst-italic fs-3">MedMaint-GH</span>
+        <p class="fst-italic fw-light">Register your hospital to get started</p>
+      </h3>
+    </div>
+  </div>
+  <mat-dialog-content>
+    <div class="container-fluid mb-3 text-center">
+      <small class="text-danger fw-semibold">
+        <span class="fw-bold fs-5 text-decoration-underline">Note:</span> You
+        should be the Head of Biomedical/Clinical engineering unit in order to
+        register. If you are not, kindly contact the head of Biomedical/Clinical
+        Engineering in your hospital to add you. Thank you!
+      </small>
+      <form [formGroup]="registrationForm">
+        <div style="border-bottom: 1px solid black">
+          <h3 style="text-decoration: underline" class="fw-semibold text-start">
+            Personal Information
+          </h3>
+        </div>
+        <div class="row">
+          <div class="col-md-6 mt-2 row">
+            <div class="col-md-3 text-center">
+              <label class="form-label">First Name:</label>
+            </div>
+            <div class="col-md-9 text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="firstName"
+                [class.is-invalid]="firstName?.invalid && firstName?.touched"
+              />
+              <small
+                *ngIf="firstName?.invalid && firstName?.touched"
+                class="text-danger"
+                >First name is require</small
+              >
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-2 row">
+            <div class="col-md-3 text-center">
+              <label class="form-label">Surname:</label>
+            </div>
+            <div class="col-md-9 text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="surname"
+                [class.is-invalid]="surname?.invalid && surname?.touched"
+              />
+              <small
+                class="text-danger"
+                *ngIf="surname?.invalid && surname?.touched"
+                >Surname is required</small
+              >
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-2 row">
+            <div class="col-md-3 text-center">
+              <label class="form-label">Other name:</label>
+            </div>
+            <div class="col-md-9 text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="otherNames"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-2 row">
+            <div class="col-md-3 text-center">
+              <label class="form-label">Phone Number:</label>
+            </div>
+            <div class="col-md-9 text-center">
+              <input
+                type="tel"
+                placeholder="e.g. +233540000000"
+                class="form-control form-control-sm"
+                formControlName="phone"
+                [class.is-invalid]="phone?.invalid && phone?.touched"
+              />
+              <small
+                class="text-danger"
+                *ngIf="phone?.invalid && phone?.touched"
+                >Phone number is invalid</small
+              >
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-2 row">
+            <div class="col-md-3 text-center">
+              <label class="form-label">Email:</label>
+            </div>
+            <div class="col-md-9 text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="email"
+                [class.is-invalid]="email?.invalid && email?.touched"
+              />
+              <small
+                class="text-danger"
+                *ngIf="email?.invalid && email?.touched"
+                >Email address is not valid</small
+              >
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-2 row">
+            <div class="col-md-3 text-center">
+              <label class="form-label">Rank:</label>
+            </div>
+            <div class="col-md-9 text-center">
+              <input
+                type="text"
+                class="form-control form-control-sm"
+                formControlName="rank"
+              />
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-2 row">
+            <div class="col-md-3 text-center">
+              <label class="form-label">Password:</label>
+            </div>
+            <div class="col-md-9 text-center">
+              <input
+                type="password"
+                class="form-control form-control-sm"
+                formControlName="password"
+                [class.is-invalid]="password?.invalid && password?.touched"
+              />
+              <small
+                *ngIf="password?.invalid && password?.touched"
+                class="text-danger"
+                >Password is either too short, too long or empty</small
+              >
+            </div>
+          </div>
+
+          <div class="col-md-6 mt-2 row">
+            <div class="col-md-3 text-center">
+              <label class="form-label">Confirm password:</label>
+            </div>
+            <div class="col-md-9 text-center">
+              <input
+                type="password"
+                class="form-control form-control-sm"
+                formControlName="confirmPassword"
+                [class.is-invalid]="
+                  confirmPassword?.value != password?.value &&
+                  confirmPassword?.touched &&
+                  confirmPassword?.invalid
+                "
+                [class.is-valid]="
+                  confirmPassword?.value == password?.value &&
+                  confirmPassword?.touched &&
+                  confirmPassword?.valid
+                "
+              />
+              <small
+                class="text-danger"
+                *ngIf="
+                  confirmPassword?.value != password?.value &&
+                  confirmPassword?.touched
+                "
+                >Password does not match</small
+              >
+            </div>
+          </div>
+
+          <div style="border-bottom: 1px solid black">
+            <h3
+              style="text-decoration: underline"
+              class="fw-semibold text-start"
+            >
+              Hospital Information
+            </h3>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mt-2 row">
+              <div class="col-md-3 text-center">
+                <label class="form-label">Hospital name:</label>
+              </div>
+              <div class="col-md-9 text-center">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  formControlName="hospitalName"
+                  [class.is-invalid]="
+                    hospitalName?.invalid && hospitalName?.touched
+                  "
+                />
+                <small
+                  *ngIf="hospitalName?.invalid && hospitalName?.touched"
+                  class="text-danger"
+                  >Hospital name is required</small
+                >
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2 row">
+              <div class="col-md-3 text-center">
+                <label class="form-label">City/Town:</label>
+              </div>
+              <div class="col-md-9 text-center">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  formControlName="cityTown"
+                  [class.is-invalid]="cityTown?.invalid && cityTown?.touched"
+                />
+                <small *ngIf="cityTown?.invalid && cityTown?.touched" class="text-danger">City/Town is required</small>
+              </div>
+            </div>
+            <div class="col-md-6 mt-2 row">
+              <div class="col-md-3 text-center">
+                <label class="form-label">Region:</label>
+              </div>
+              <div class="col-md-9 text-center">
+                <select2
+                  formControlName="region"
+                  [overlay]="select2Overlay"
+                  [data]="regions"
+                  styleMode="noStyle"
+                  [placeholder]="selected"
+                  class="form-control form-control-sm"
+                >
+                </select2>
+                <small *ngIf="region?.invalid" class="text-danger">No region selected</small>
+              </div>
+            </div>
+
+            <div class="col-md-6 mt-2 row">
+              <div class="col-md-3 text-center">
+                <label class="form-label">Address:</label>
+              </div>
+              <div class="col-md-9 text-center">
+                <input
+                  type="text"
+                  class="form-control form-control-sm"
+                  formControlName="address"
+                />
+              </div>
+            </div>
+
+            <div class="mb-3 col-md-6 mt-2 row">
+              <div class="col-md-3 text-center">
+                <label class="form-label">Logo:</label>
+              </div>
+              <div class="col-md-9 text-center">
+                <input
+                  type="file"
+                  accept="image/*"
+                  class="form-control form-control-sm"
+                  formControlName="logo"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="text-center">
+        <button
+          class="btn btn-success btn-sm px-5 rounded-pill"
+          [disabled]="
+            registrationForm.invalid ||
+            password?.value != confirmPassword?.value
+          "
+          (click)="registerHandler()"
+        >
+          Register
+        </button>
+      </div>
+    </div>
+    <div class="mt-3 text-center">
+      <span class="text-muted fst-italic">Powered by: </span>
+      <img
+        src="../../../assets/logo/logo.png"
+        style="width: 30px; height: 30px"
+      />
+      <span class="text-primary fst-italic fw-semibold fs-6">MedMaint-GH</span>
+    </div>
+  </mat-dialog-content>
+</div>

@@ -1,0 +1,99 @@
+<div class="d-flex justify-content-between pt-1">
+  <button class="btn btn-sm btn-outline-success" (click)="goBack()">
+    <fa-icon [icon]="backArrow" size="lg"></fa-icon>
+  </button>
+  <div style="width: fit-content">
+    <button
+      class="btn btn-sm btn-danger me-1"
+      style="--bs-btn-font-size: 0.75rem"
+      (click)="removeDept()"
+    >
+      <fa-icon [icon]="deleteIcon" size="lg"></fa-icon> Remove
+    </button>
+    <button (click)="resetDeptKey()" class="btn btn-sm btn-warning" style="--bs-btn-font-size: 0.75rem">
+      Reset Key
+    </button>
+  </div>
+</div>
+<ae-dashboard [title]="pageTitle">
+  <div id="row1col1" class="bg-light text-center rounded m-2 shadow">
+    <piechart
+      [chartTitile]="piechartTitle"
+      [data]="pieChartData"
+      [chartLabels]="piechartLabels"
+      [colors]="piechartColors"
+    >
+    </piechart>
+  </div>
+  <div id="row1col2" class="overflow-auto my-3 px-2">
+    <p class="fs-6 fw-semibold fst-italic">Activities in Progress</p>
+    <table datatable class="row-border hover">
+      <thead class="text-success">
+        <tr>
+          <th>Activity</th>
+          <th>Equipment</th>
+          <th>Lead Engineer</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let activity of activities" class="text-start">
+          <td>{{ activity?.title }}</td>
+          <td>{{ activity?.equipment?.asset_number }}</td>
+          <td>{{ activity?.user?.userName }}</td>
+          <td>
+            <span class="text-success" (click)="showActivity(activity)" style="cursor: pointer"
+              ><fa-icon [icon]="eyeIcon"></fa-icon
+            ></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="row2col1" class="overflow-auto my-3 px-2 border-end border-success border-2">
+    <p class="fs-6 fw-semibold fst-italic">Equipment &lt; <span class="text-success">{{ department.dept_name }}</span> &gt;</p>
+    <table id="deptTable" class="row-border hover">
+      <thead class="text-success">
+        <tr>
+          <th>Asset Number</th>
+          <th>Name</th>
+          <th>Location</th>
+          <th>Condition</th>
+          <th>Details</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let equipment of equipments" class="text-start">
+            <td>{{ equipment?.asset_number }}</td>
+            <td>{{ equipment?.equip_name }}</td>
+            <td>{{ equipment?.location }}</td>
+            <td>{{ equipment?.condition }}</td>
+            <td><span (click)="showEquipment(equipment)" class="text-success" style="cursor: pointer;"><fa-icon [icon]="eyeIcon"></fa-icon></span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="row2col2" class="overflow-auto my-3 px-2 border-start border-success border-2">
+    <p class="fs-6 fw-semibold fst-italic">Personnel</p>
+    <table datatable class="row-border hover">
+      <thead class="text-success">
+        <tr>
+          <th>Name</th>
+          <th>Role</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let person of persons" class="text-start">
+          <td>{{ person?.userName }}</td>
+          <td>{{ person?.role }}</td>
+          <td>
+            <span class="text-success" (click)="showPerson(person)" style="cursor: pointer"
+              ><fa-icon [icon]="eyeIcon"></fa-icon
+            ></span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ae-dashboard>

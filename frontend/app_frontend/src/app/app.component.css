@@ -1,0 +1,8 @@
+::ng-deep .mat-mdc-snack-bar-actions button{
+    border: 1px solid #ffff;
+    
+}
+::ng-deep .mat-mdc-snack-bar-actions button .mdc-button__label{
+    color: #ffff;
+    font-weight: bold;
+}

@@ -1,0 +1,8 @@
+<home-layout [user]="user">
+  <div id="sidenav" class="d-flex flex-column">
+    <div class="my-4">
+      <a routerLink="dashboard" class="p-3 text-light text-decoration-none bg-primary"><fa-icon [icon]="dashIcon"></fa-icon> Dashboard</a>
+    </div>
+  </div>
+  <router-outlet></router-outlet>
+</home-layout>

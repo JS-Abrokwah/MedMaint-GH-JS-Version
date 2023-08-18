@@ -1,0 +1,36 @@
+<tabs-renderer [tabs]="tabs">
+  <div id="tab-0-content" class="bg-light">
+    <ae-dashboard>
+      <div id="row1col1">
+        <h3 class="fw-semibold">Due PPM</h3>
+        <div *ngFor="let plan of duePPM">
+          <dueppm [ppmPlan]="plan"></dueppm>
+        </div>
+      </div>
+      <div id="row1col2">
+        <h3 class="fw-semibold text-danger mb-1">Overdue PPM</h3>
+        <table style="width: 100%;" datatable class="row-border hover">
+          <thead class="text-center text-success">
+            <tr>
+              <th>Plan ID</th>
+              <th>Due Date</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="text-start" *ngFor="let ppm of overduePPM">
+              <td>{{ ppm.plan_id}}</td>
+              <td>{{ ppm.due_date }}</td>
+              <td>
+                <span class="btn btn-sm btn-link">start</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </ae-dashboard>
+  </div>
+  <div id="tab-1-content" class="bg-light py-3">Planning component</div>
+  <div id="tab-2-content" class="bg-light py-3">Schedule component</div>
+  <div id="tab-3-content" class="bg-light py-3">Report component</div>
+</tabs-renderer>

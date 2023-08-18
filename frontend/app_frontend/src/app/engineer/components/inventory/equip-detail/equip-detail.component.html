@@ -1,0 +1,428 @@
+<div
+  class="container px-3 py-3"
+  style="background-color: rgba(206, 244, 228, 1); max-width: 70vw"
+>
+  
+  <mat-dialog-content>
+    <div class="row pt-3">
+      <div class="col-sm-8 text-start">
+        <p class="fw-bold">As at:  <span class="text-success">{{ currentDateTime }}</span></p>
+      </div>
+      <div class="col-sm-4 text-center">
+        <button class="btn btn-sm btn-warning">Edit</button>
+      </div>
+    </div>
+    <div class="row pt-1">
+      <div class="col-md-6">
+        <div class="mb-3 row">
+          <h2></h2>
+          <label class="form-label col-md-4">Name:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="name?.invalid && name?.touched"
+              formControlName="name"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="name?.invalid && name?.touched"
+            >
+              <small>Name field is required</small>
+            </div>
+          </div>
+        </div>
+
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Serial Number:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                serialNumber?.invalid && serialNumber?.touched
+              "
+              formControlName="serialNumber"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="serialNumber?.invalid && serialNumber?.touched"
+            >
+              <small>Serial Number field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Location:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="location?.invalid && location?.touched"
+              formControlName="location"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="location?.invalid && location?.touched"
+            >
+              <small>Location field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Department:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="department?.invalid && department?.touched"
+              formControlName="department"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="department?.invalid && department?.touched"
+            >
+              <small>Department field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Country of Origin:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                countryOfOrigin?.invalid && countryOfOrigin?.touched
+              "
+              formControlName="countryOfOrigin"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="countryOfOrigin?.invalid && countryOfOrigin?.touched"
+            >
+              <small>Country of Origin field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Expected Lifespan:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                expectedLifespan?.invalid && expectedLifespan?.touched
+              "
+              formControlName="expectedLifespan"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="expectedLifespan?.invalid && expectedLifespan?.touched"
+            >
+              <small>Expected Lifespan field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Condition:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="condition?.invalid && condition?.touched"
+              formControlName="condition"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="condition?.invalid && condition?.touched"
+            >
+              <small>Condition field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Vendor Name:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="vendorName?.invalid && vendorName?.touched"
+              formControlName="vendorName"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="vendorName?.invalid && vendorName?.touched"
+            >
+              <small>Vendor Name field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Vendor's Email:</label>
+          <div class="col-md-8">
+            <input
+              type="email"
+              class="form-control form-control-sm"
+              formControlName="vendorEmail"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="vendorEmail?.invalid && vendorEmail?.touched"
+            >
+              <small>Vendor's Email field is either empty or invalid</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Vendor's Phone:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              formControlName="vendorTel"
+              placeholder="+23354*******"
+              [class.is-invalid]="vendorTel?.invalid && vendorTel?.touched"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="vendorTel?.invalid && vendorTel?.touched"
+            >
+              <small>Vendor's Phone field is required</small>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <h2></h2>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Model:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="model?.invalid && model?.touched"
+              formControlName="model"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="model?.invalid && model?.touched"
+            >
+              <small>Model field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Manufacturer:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                manufacturer?.invalid && manufacturer?.touched
+              "
+              formControlName="manufacturer"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="manufacturer?.invalid && manufacturer?.touched"
+            >
+              <small>Manufacturer field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Manufacturing Year:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                manufacturingYear?.invalid && manufacturingYear?.touched
+              "
+              formControlName="manufacturingYear"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="manufacturingYear?.invalid && manufacturingYear?.touched"
+            >
+              <small>Manufacturer Year field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Type:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="type?.invalid && type?.touched"
+              formControlName="type"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="type?.invalid && type?.touched"
+            >
+              <small>Type field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">PPM Interval:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                ppmIntervalScale?.invalid && ppmIntervalScale?.touched
+              "
+              formControlName="ppmIntervalScale"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="ppmIntervalScale?.invalid && ppmIntervalScale?.touched"
+            >
+              <small>PPM Interval field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Date Installed:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                dateInstalled?.invalid && dateInstalled?.touched
+              "
+              formControlName="dateInstalled"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="dateInstalled?.invalid && dateInstalled?.touched"
+            >
+              <small>Date Installed field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Remark:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="remark?.invalid && remark?.touched"
+              formControlName="remark"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="remark?.invalid && remark?.touched"
+            >
+              <small>Remark field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Vendor Address:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                vendorAddress?.invalid && vendorAddress?.touched
+              "
+              formControlName="vendorAddress"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="vendorAddress?.invalid && vendorAddress?.touched"
+            >
+              <small>Vendor Address field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Vendor's Country:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                vendorCountry?.invalid && vendorCountry?.touched
+              "
+              formControlName="vendorCountry"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="vendorCountry?.invalid && vendorCountry?.touched"
+            >
+              <small>Vendor's Country field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Last Updated By:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="
+                lastUpdatedBy?.invalid && lastUpdatedBy?.touched
+              "
+              formControlName="lastUpdatedBy"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="lastUpdatedBy?.invalid && lastUpdatedBy?.touched"
+            >
+              <small>Last Updated By field is required</small>
+            </div>
+          </div>
+        </div>
+        <div class="mb-3 row">
+          <label class="form-label col-md-4">Last Updated:</label>
+          <div class="col-md-8">
+            <input
+              type="text"
+              class="form-control form-control-sm"
+              [class.is-invalid]="lastUpdated?.invalid && lastUpdated?.touched"
+              formControlName="lastUpdated"
+            />
+            <div
+              class="text-danger text-center"
+              *ngIf="lastUpdated?.invalid && lastUpdatedBy?.touched"
+            >
+              <small>Last Updated field is required</small>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-4 text-center"></div>
+      <div class="col-sm-4 text-center row">
+        <div class="col-sm-6 my-1">
+          <button
+            class="btn btn-sm btn-success px-3"
+            style="--bs-btn-font-size: 0.75rem"
+            [disabled]="registrationForm.invalid"
+            (click)="saveEquip()"
+          >
+            save
+          </button>
+        </div>
+        <div class="col-sm-6 my-1">
+          <button
+            class="btn btn-sm btn-secondary px-3"
+            style="--bs-btn-font-size: 0.75rem"
+          >
+            cancel
+          </button>
+        </div>
+      </div>
+      <div class="col-sm-4 text-center"></div>
+    </div>
+  </mat-dialog-content>
+</div>
